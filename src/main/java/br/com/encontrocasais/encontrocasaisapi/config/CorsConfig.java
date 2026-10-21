@@ -13,7 +13,7 @@ public class CorsConfig implements WebMvcConfigurer {
 
     private final List<String> allowedOrigins;
 
-    public CorsConfig(@Value("${cors.allowed-origins}") String allowedOrigins) {
+    public CorsConfig(@Value("${cors.allowed-origins:https://samdevf.github.io,http://localhost:3000,http://localhost:5500,http://127.0.0.1:5500}") String allowedOrigins) {
         this.allowedOrigins = Arrays.stream(allowedOrigins.split(","))
                 .map(String::trim)
                 .filter(origin -> !origin.isEmpty())
@@ -24,7 +24,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins(allowedOrigins.toArray(String[]::new))
-                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
     }
 }
