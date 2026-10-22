@@ -17,7 +17,7 @@ public class CorsConfig {
     public FilterRegistrationBean<CorsFilter> corsFilter() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of(
-                "https://samdevf.github.io",
+                "https://encontrodecasais-orizona.netlify.app/",
                 "http://localhost:5500",
                 "http://127.0.0.1:5500"
         ));
